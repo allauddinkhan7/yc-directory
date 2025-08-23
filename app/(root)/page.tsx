@@ -43,7 +43,7 @@ const posts = [
     "description": "Tips and tricks for delicious vegan cooking.",
     "image": "https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHJhdmVsfGVufDB8fDB8fHww",
     "category": "Travel",
-    "title": "hot balloons adventure and travel"
+    "title": "hot Balloons adventure and travel"
   },
   {
     "_createdAt": "2025-08-20T09:15:00Z",
