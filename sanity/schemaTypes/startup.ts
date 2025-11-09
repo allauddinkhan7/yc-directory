@@ -1,11 +1,13 @@
-import { UserIcon } from "lucide-react";
+
+//startups submitted by auhtor
+
+
 import { defineField, defineType } from "sanity";
 
 export const startup = defineType({
     name: "startup",
     title: "Startup",
     type: "document",
-    icon: UserIcon,
     fields: [ 
         defineField({ //define fields which each author document will have
             name: "slug",
