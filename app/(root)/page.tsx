@@ -1,10 +1,11 @@
 import SearchForm from "@/components/SearchForm";
-import StartupCard from "@/components/StartupCard";
+import StartupCard,  {StartupTypeCard}  from "@/components/StartupCard";
 import { client } from "@/sanity/lib/client";
 import { startupQuery } from "@/sanity/lib/queries";
 // import { fetchUsers } from "@/lib/utils";
 // import { useEffect, useState } from "react";
 // import { useDebounce } from "../hooks/UseDebounce";
+
 export default async function Home({
   searchParams,
 }: {
@@ -12,19 +13,19 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
 
-  type StartupCardType = {
-    _id: number;
-    _createdAt: string;
-    views: number;
-    author: {
-      _id: number;
-      name: string; // 👈 add this
-    };
-    description: string;
-    image: string;
-    category: string;
-    title: string;
-  };
+  // type StartupCardType = {
+  //   _id: number;
+  //   _createdAt: string;
+  //   views: number;
+  //   author: {
+  //     _id: number;
+  //     name: string; // 👈 add this
+  //   };
+  //   description: string;
+  //   image: string;
+  //   category: string;
+  //   title: string;
+  // };
 
   const posts = await client.fetch(startupQuery)
   console.log("start ups fetched..............", JSON.stringify(posts, null, 2));
@@ -170,7 +171,7 @@ export default async function Home({
 
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
-            posts.map((post: StartupCardType) => (
+            posts.map((post: StartupTypeCard) => (
               <StartupCard key={post?._id} post={post} />
             ))
           ) : (
