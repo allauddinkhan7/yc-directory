@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "predev":"npm run typegen",
-    "prebuild":"npm run typegen",
-    "typegen":"sanity schema extract --path=./sanity/extract.json && sanity-typegen generate"
+    "lint": "next lint",
+    "predev": "npm run typegen",
+    "prebuild": "",
+
+    "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
   },
   "packageManager": "npm@10.5.2",
   "overrides": {
@@ -32,6 +33,7 @@
     "react-dom": "19.1.0",
     "sanity": "^4.10.2",
     "sanity-plugin-markdown": "^6.0.0",
+    "server-only": "^0.0.1",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7"
