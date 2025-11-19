@@ -12,12 +12,9 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-
-  const { data: posts } = await sanityFetch({ query: startupQuery });
-  console.log(
-    "start ups fetched..............",
-    JSON.stringify(posts, null, 2)
-  );
+  const params = { search: query || null };
+  const { data: posts } = await sanityFetch({ query: startupQuery, params });
+  
   // const posts = [
   //   {
   //     _createdAt: "2025-08-23T15:00:00Z",
