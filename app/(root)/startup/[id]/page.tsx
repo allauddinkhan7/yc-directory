@@ -10,8 +10,8 @@ const fetchPost = cache(async (id: string) => {
   return await client.fetch(singleStartupQuery, { id });
 });
 
-const Page = async ({ params }: { params: { id: string } }) => {
-  const id = params.id;
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
   const post = await fetchPost(id);
   if (!post) return notFound();
 
@@ -25,24 +25,26 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
       <section className="section_container">
         <Image
-          src={post.image}
+          src={post.image || "/placeholder-image.png"}
           alt="thumbnail"
           className="w-full h-auto rounded-xl"
+          width={800}
+          height={450}
         />
 
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex-between gap-5">
-            <Link href={`/user/${post.author._id}`} className="flex gap-2 items-center mb-3">
+            <Link href={`/user/${post.author?._id}`} className="flex gap-2 items-center mb-3">
               <Image
-                src={post.author.image}
-                alt="avatar"
+                src={post.author?.image || "/default-avatar.png"}
+                alt={post.author?.name || "Anonymous"}
                 width={64}
                 height={64}
                 className="rounded-full drop-shadow-lg"
               />
               <div>
-                <p className="text-20-medium">{post.author.name}</p>
-                <p className="text-16-medium !text-black-300">@{post.author.username}</p>
+                <p className="text-20-medium">{post.author?.name}</p>
+                <p className="text-16-medium !text-black-300">@{post.author?.username}</p>
               </div>
             </Link>
             <p className="category-tag">{post.category}</p>
